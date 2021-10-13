@@ -1,0 +1,27 @@
+{
+    "names": ["Default", "Films"],
+    "Default": [
+        {
+            "name": "My Day",
+            "add": "",
+            "tasks": ["Go Shopping", "Read Book"]
+        },
+        {
+            "name": "Important",
+            "add": "",
+            "tasks": ["Wake Up At 7"]
+        },
+        {
+            "name": "Tasks",
+            "add": "",
+            "tasks": []
+        }
+    ],
+    "Films": [
+        {
+            "name": "Films",
+            "add": "",
+            "tasks": ["Bad Boys"]
+        }
+    ]
+  }
