@@ -4,40 +4,51 @@ import Main from "./components/Main"
 import data from "./data/db.json"
 
 function App() {
-    const changeSection = (header) => {
-        const names = data.names
-        let allSection = []
-        names.map((name) => {data[name].map((n) => {if (n.name === header) {allSection = n}})})
-        return allSection
-    }
     const [header, setHeader] = useState("My Day")
     const [taskInputValue, setTaskInputValue] = useState("")
-    const [section, setSection] = useState(changeSection(header))
-    const changeGroup = (name) => {
-        const names = data.names
-        names.map((name) => {data[name].map((n) => {if (n.name === header) {
-            n.add = taskInputValue
-            n.tasks = section.tasks
-        }})})
+    const [database, setDatabase] = useState(data)
+    const [categoryId, setCategoryId] = useState(0)
+
+    const changeGroup = name => {
         setHeader(name)
-        let betaSection = changeSection(name)
-        setSection(betaSection)
-        setTaskInputValue(betaSection.add)
+        for (let index = 0; index < database.categories.length; index++) {
+            if (database.categories[index].name === name) {
+                setDatabase({ 
+                    ...database, 
+                    categories: [ 
+                        ...database.categories, 
+                        database.categories[categoryId].addInputPlaceholder = taskInputValue 
+                    ] 
+                })
+                setTaskInputValue(database.categories[index].addInputPlaceholder)
+                setCategoryId(database.categories[index].id)
+                break
+            }
+        }
     }
-    const updateAddNewList = (e, name, nameIndex, addNewList, setAddNewList) => {
-        e.preventDefault()
-        data[name].push({
-            name: addNewList[nameIndex],
-            add: "",
-            tasks: []
-        })
-        setAddNewList(data.names.map((name) => ""))
+
+    const setId = tableName => {
+        return tableName[0] ? tableName.at(-1).id+1 : 0
     }
+
     return (
         <div className="container">
-            <Nav groups={data} changeGroup={changeGroup} updateAddNewList={updateAddNewList} header={header} ></Nav>
-            <Main header={header} section={section} taskInputValue={taskInputValue} setTaskInputValue={setTaskInputValue} 
-            setSection={setSection}></Main>
+            <Nav 
+            header={header} 
+            database={database} 
+            setDatabase={setDatabase} 
+            changeGroup={changeGroup} 
+            setId={setId}
+            />
+            <Main 
+            header={header} 
+            taskInputValue={taskInputValue} 
+            setTaskInputValue={setTaskInputValue} 
+            database={database} 
+            setDatabase={setDatabase} 
+            categoryId={categoryId} 
+            setId={setId}
+            />
         </div>
     )
 }

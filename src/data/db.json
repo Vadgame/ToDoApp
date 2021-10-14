@@ -1,27 +1,18 @@
 {
-    "names": ["Default", "Films"],
-    "Default": [
-        {
-            "name": "My Day",
-            "add": "",
-            "tasks": ["Go Shopping", "Read Book"]
-        },
-        {
-            "name": "Important",
-            "add": "",
-            "tasks": ["Wake Up At 7"]
-        },
-        {
-            "name": "Tasks",
-            "add": "",
-            "tasks": []
-        }
+    "groups": [
+        { "id": 0, "name": "Default" },
+        { "id": 1, "name": "Films" }
     ],
-    "Films": [
-        {
-            "name": "Films",
-            "add": "",
-            "tasks": ["Bad Boys"]
-        }
+    "categories": [
+        { "id": 0, "groupId": 0, "addInputPlaceholder": "", "name": "My Day" },
+        { "id": 1, "groupId": 0, "addInputPlaceholder": "", "name": "Important" },
+        { "id": 2, "groupId": 0, "addInputPlaceholder": "", "name": "Tasks" },
+        { "id": 3, "groupId": 1, "addInputPlaceholder": "", "name": "Films" }
+    ],
+    "tasks": [
+        { "id": 0, "categoryId": 0, "name": "Go Shopping" },
+        { "id": 1, "categoryId": 0, "name": "Read Book" },
+        { "id": 2, "categoryId": 1, "name": "Wake Up At 7" },
+        { "id": 3, "categoryId": 3, "name": "Bad Boys" }
     ]
-  }
+}

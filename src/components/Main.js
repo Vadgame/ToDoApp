@@ -1,29 +1,45 @@
 import TaskForm from "./TaskForm"
 import Tasks from "./Tasks"
 
-const Main = ({ header, section, taskInputValue, setTaskInputValue, setSection }) => {
+const Main = ({ header, taskInputValue, setTaskInputValue, database, setDatabase, categoryId, setId }) => {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const date = new Date();
-    const onSubmit = e => {
+
+    const addTask = e => {
         e.preventDefault()
-        if (taskInputValue) {
-            setSection({...section, tasks: [...section.tasks, taskInputValue]})
+        if ( taskInputValue ) {
+            const newTask = { 
+                id: setId(database.tasks), 
+                categoryId: categoryId, 
+                name: taskInputValue 
+            }
+            setDatabase({ 
+                ...database, 
+                tasks: [ 
+                    ...database.tasks, 
+                    newTask 
+                ] 
+            })
             setTaskInputValue("")
         }
     }
-    const deleteTask = index => {
-        let tasksList = section.tasks
-        tasksList.splice(index, 1)
-        setSection({...section, tasks: tasksList})
-    }
+
     return (
         <main>
             <header>
                 <h1>{header}</h1>
                 {header === "My Day" && <h3>{days[date.getDay()]}</h3>}
             </header>
-            <TaskForm onSubmit={onSubmit} taskInputValue={taskInputValue} setTaskInputValue={setTaskInputValue} />
-            <Tasks section={section} deleteTask={deleteTask}></Tasks>
+            <TaskForm 
+            addTask={addTask} 
+            taskInputValue={taskInputValue} 
+            setTaskInputValue={setTaskInputValue} 
+            /> 
+            <Tasks 
+            database={database} 
+            setDatabase={setDatabase} 
+            categoryId={categoryId} 
+            />
         </main>
     )
 }
