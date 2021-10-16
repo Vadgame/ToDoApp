@@ -5,7 +5,7 @@ export const Task = ({ task, onClick }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <div class="task">
+        <div className="task">
             <span>{task}</span>
             <button className="btn-remove" onClick={onClick}>
                 <HiTrash

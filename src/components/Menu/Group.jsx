@@ -1,21 +1,16 @@
 import { useState } from "react";
-import { HiDotsVertical, HiOutlineViewList, HiOutlinePlus } from "react-icons/hi"
+import { HiDotsVertical, HiOutlineViewList } from "react-icons/hi";
+import { AddForm } from "../shared/AddForm";
 
 export const Group = ({ group, categories, addCategory, setCategory }) => {
     const [isInputVisible, setIsInputVisible] = useState(false);
-    const [newCategoryName, setNewCategoryName] = useState("");
 
     const toggleInputVisibility = () => {
         setIsInputVisible(prev => !prev);
     };
 
-    const updateNewCategoryName = (event) => {
-        setNewCategoryName(event.target.value);
-    };
-
-    const handleAddingCategory = () => {
+    const handleAddingCategory = (newCategoryName) => {
         addCategory(group.id, newCategoryName);
-        setNewCategoryName("");
     };
 
     return (
@@ -26,20 +21,9 @@ export const Group = ({ group, categories, addCategory, setCategory }) => {
                 </button>
                 <h3>{group.name}</h3>
             </div>
-            <div>
-                {isInputVisible && 
-                    <div className="input-row">
-                        <input
-                            type="text"
-                            value={newCategoryName}
-                            onChange={updateNewCategoryName}
-                        />
-                        <button className="btn-add" onClick={handleAddingCategory}>
-                            <HiOutlinePlus />
-                        </button>
-                    </div>
-                }
-            </div>
+            {isInputVisible &&
+                <AddForm onSubmit={handleAddingCategory} placeholder="Add new category"/>
+            }
             <ul className="list">
                 {categories.map(category => 
                     <li

@@ -1,15 +1,8 @@
-import { useState } from "react";
 import { Group } from "./Group";
+import { AddForm } from "../shared/AddForm";
 
 
 export const SideMenu = ({ groups, categories, addGroup, addCategory, setCategory }) => {
-    const [newGroupName, setNewGroupName] = useState("");
-
-    const handleAddNewGroup = () => {
-        addGroup(newGroupName);
-        setNewGroupName("");
-    };
-
     return (
         <nav className="side-menu">
             {groups.map(group => 
@@ -21,12 +14,7 @@ export const SideMenu = ({ groups, categories, addGroup, addCategory, setCategor
                     setCategory={setCategory}
                 />
             )}
-            <div className="add-new-group">
-                <input type="text" value={newGroupName} onChange={(e) => setNewGroupName(e.target.value)}/>
-                <button className="btn-add-group" onClick={handleAddNewGroup}>
-                    Add new group
-                </button>
-            </div>
+            <AddForm onSubmit={addGroup} placeholder="Add new group"/>
         </nav>
     );
 };
