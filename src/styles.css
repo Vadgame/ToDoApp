@@ -1,0 +1,141 @@
+body{
+    background-color: blanchedalmond;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 4px 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+input{
+    border-radius: 3px;
+    border-width: 1px;
+}
+
+.container{
+    display: flex;
+}
+
+.list{
+    list-style-type: none;
+    padding: 0;
+}
+.list > *{
+    margin: 5px 0;
+}
+
+.input-row{
+    display: flex;
+    gap: 4px;
+}
+
+.side-menu{
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+.add-new-group{
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.btn-add-group{
+    padding: 0.5em 1em;
+    border-radius: 7px;
+    border: none;
+    background-color: lightgreen;
+    font-weight: 600;
+    border: 2px solid transparent;
+}
+
+.side-menu .add-new-group .btn-add-new-group:hover{
+    border-color: lime;
+}
+
+.group-heading{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.btn-group-options{
+    display: flex;
+    padding: 0.1em;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+.btn-group-options:hover{
+    background: lightgray;
+    border-color: gray;
+}
+
+.category{
+    cursor: pointer;
+    display: flex;
+    gap: 1em;
+    background-color: lightgray;
+    border-radius: 2px;
+    border: 1px solid black;
+}
+.category:hover{
+    background-color: lightsteelblue;
+}
+
+.task-list-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.task-list-heading{
+    display: flex;
+    flex-direction: column;
+}
+.task-list-heading-title{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.btn-close-task-list{
+    display: flex;
+    padding: 0.1em;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    transition: 400ms;
+}
+.btn-close-task-list:hover{
+    transform: rotate(180deg);
+}
+
+.btn-add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    background-color: lightgreen;
+    padding: 4px;
+    border-radius: 50%;
+    transition: 400ms;
+}
+.btn-add:hover{
+    border-color: lime;
+    transform: rotate(180deg);
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.btn-remove{
+    border: none;
+    background-color: transparent;
+}

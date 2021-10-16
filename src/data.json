@@ -1,0 +1,18 @@
+{
+    "groups": [
+        { "id": "0", "name": "Default" },
+        { "id": "1", "name": "Films" }
+    ],
+    "categories": [
+        { "id": "0", "groupID": "0", "name": "My Day" },
+        { "id": "1", "groupID": "0", "name": "Important" },
+        { "id": "2", "groupID": "0", "name": "Tasks" },
+        { "id": "3", "groupID": "1", "name": "Films" }
+    ],
+    "tasks": [
+        { "id": "0", "categoryID": "0", "name": "Go Shopping" },
+        { "id": "1", "categoryID": "0", "name": "Read Book" },
+        { "id": "2", "categoryID": "1", "name": "Wake Up At 7" },
+        { "id": "3", "categoryID": "3", "name": "Bad Boys" }
+    ]
+}
